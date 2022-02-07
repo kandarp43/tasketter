@@ -1,0 +1,147 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	user-select: none;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.signin_page {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.signup_page {
+	margin: 100px 0px;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.signin_email,
+.signin_password,
+.signup_name,
+.signup_email,
+.signup_number,
+.signup_gender,
+.signup_dob {
+	width: 30%;
+	align-items: flex-start;
+	margin: 10px;
+	font-size: 18px;
+}
+.heading {
+	color: coral;
+	font-size: 40px;
+	font-style: oblique;
+	font-weight: 700;
+	margin-bottom: 30px;
+	font-family: consolas;
+}
+.redirect {
+	font-size: 14px;
+	font-weight: 300;
+}
+.redirect a {
+	text-decoration: none;
+	font-weight: 500;
+	color: rgb(253, 100, 44);
+}
+#signin_form,
+#signup_form {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+#signin_email,
+#signin_password,
+#signup_name,
+#signup_email,
+#signup_number {
+	margin-top: 3px;
+	width: 100%;
+	padding: 20px;
+	font-size: 18px;
+	color: coral;
+	height: 40px;
+	cursor: pointer;
+	border: 2px solid transparent;
+	border-bottom: 2px solid #b3aeae67;
+	background: transparent;
+	transition: all 0.2s ease-in-out;
+}
+#signup_gender {
+	margin-top: 3px;
+	width: 100%;
+	padding: 10px;
+	font-size: 18px;
+	color: coral;
+	cursor: pointer;
+	border: 2px solid transparent;
+	border-bottom: 2px solid #b3aeae67;
+	background: transparent;
+	transition: all 0.2s ease-in-out;
+}
+#signin_email:focus,
+#signin_password:focus,
+#signup_name:focus,
+#signup_email:focus,
+#signup_number:focus,
+#signup_gender:focus {
+	outline: 0;
+	color: coral;
+	border-bottom: 2px solid coral;
+	border-bottom-left-radius: 30px;
+}
+#signin_email:hover,
+#signin_password:hover,
+.input_box:hover,
+#signup_name:hover,
+#signup_email:hover,
+#signup_number:hover,
+#signup_gender:hover {
+	outline: 0;
+	border-bottom: 2px solid coral;
+}
+
+#show_pass {
+	margin-top: 20px;
+	cursor: pointer;
+}
+#show_pass:focus {
+	outline: 2px solid coral;
+	cursor: pointer;
+}
+.signin_password #show_label {
+	padding-left: 4px;
+	margin: 0px;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+#btn {
+	background: transparent;
+	width: fit-content;
+	padding: 10px 35px;
+	margin: 20px 0;
+	font-size: 16px;
+	font-weight: 700;
+	border: 2px solid coral;
+	color: coral;
+	transition: all 0.2s;
+	cursor: pointer;
+}
+#btn:hover,
+#btn:focus {
+	outline: 0;
+	/* border-radius: 5px; */
+	background: coral;
+	color: #fff;
+	border: 2px solid transparent;
+}

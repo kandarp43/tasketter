@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Tasketer Signin</title>
+		<link rel="stylesheet" href="../css/style.css" />
+	</head>
+	<body>
+		<section class="signin_page">
+			<h1 class="heading">Signin</h1>
+			<form id="signin_form">
+				<div class="signin_email">
+					<label for="signin_email">Email/Phone :</label>
+					<input type="text" id="signin_email" autocomplete="off" />
+				</div>
+				<div class="signin_password">
+					<label for="signin_password">password :</label>
+					<input type="password" id="signin_password" />
+
+					<input type="checkbox" id="show_pass" value="show password" />
+					<label for="show_pass" id="show_label">show password</label>
+				</div>
+				<button type="submit" id="btn">signin</button>
+			</form>
+			<div class="redirect">
+				don't have an account? <a href="../pages/signup.html">Signup</a>
+			</div>
+		</section>
+		<script src="../js/index.js"></script>
+	</body>
+</html>
