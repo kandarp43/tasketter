@@ -5,19 +5,30 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Tasketer Signin</title>
-		<link rel="stylesheet" href="../css/style.css" />
+		<link rel="stylesheet" href="../css/auth.css" />
 	</head>
 	<body>
 		<section class="signin_page">
 			<h1 class="heading">Signin</h1>
-			<form id="signin_form">
+			<form id="signin_form" method="post">
 				<div class="signin_email">
 					<label for="signin_email">Email/Phone :</label>
-					<input type="text" id="signin_email" autocomplete="off" />
+					<input
+						type="text"
+						id="signin_email"
+						name="email"
+						autocomplete="off"
+						required
+					/>
 				</div>
 				<div class="signin_password">
 					<label for="signin_password">password :</label>
-					<input type="password" id="signin_password" />
+					<input
+						type="password"
+						name="password"
+						id="signin_password"
+						required
+					/>
 
 					<input type="checkbox" id="show_pass" value="show password" />
 					<label for="show_pass" id="show_label">show password</label>
@@ -28,6 +39,6 @@
 				don't have an account? <a href="../pages/signup.html">Signup</a>
 			</div>
 		</section>
-		<script src="../js/index.js"></script>
+		<script src="../js/signin.js"></script>
 	</body>
 </html>

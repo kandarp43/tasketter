@@ -5,60 +5,78 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Signup</title>
-		<link rel="stylesheet" href="../css/style.css" />
+		<link rel="stylesheet" href="../css/auth.css" />
 	</head>
 	<body>
 		<section class="signup_page">
 			<h1 class="heading">Signup</h1>
-			<form id="signup_form">
+			<form id="signup_form" method="'post">
 				<div class="signup_name">
 					<label for="signup_name">Name :</label>
 					<input
 						type="text"
 						id="signup_name"
 						class="input_box"
+						name="name"
+						placeholder="ex: kandarp"
 						autocomplete="off"
+						required
 					/>
 				</div>
 				<div class="signup_email">
 					<label for="signup_email">Email :</label>
 					<input
-						type="text"
+						type="email"
 						id="signup_email"
 						class="input_box"
+						name="email"
+						placeholder="ex: kandarpdangi@gmail.com"
 						autocomplete="off"
+						required
 					/>
 				</div>
 				<div class="signup_number">
-					<label for="signin_number">Phone Number :</label>
+					<label for="signup_number">Phone Number :</label>
 					<input
 						type="number"
 						id="signup_number"
 						class="input_box"
+						name="number"
+						placeholder="ex: 1234567890"
 						autocomplete="off"
+						required
 					/>
 				</div>
 
 				<div class="signup_gender">
 					<label for="signup_gender">Gender :</label>
-
-					<select id="signup_gender" style="color: coral">
-						<option value="female">Male</option>
+					<select id="signup_gender" style="color: coral" name="gender">
+						<option value="male">Male</option>
 						<option value="female">Female</option>
 					</select>
 				</div>
 				<div class="signup_dob">
-					<label for="signin_dob">Phone Number :</label>
+					<label for="signup_dob">Date of birth :</label>
 					<input
 						type="date"
-						id="signup_number"
+						id="signup_dob"
 						class="input_box"
+						name="dob"
+						max="2010-12-25"
+						min="1920-12-25"
 						autocomplete="off"
+						required
 					/>
 				</div>
 				<div class="signin_password">
 					<label for="signin_password">password :</label>
-					<input type="password" id="signin_password" />
+					<input
+						type="password"
+						id="signin_password"
+						name="password"
+						placeholder="password"
+						required
+					/>
 
 					<input type="checkbox" id="show_pass" value="show password" />
 					<label for="show_pass" id="show_label">show password</label>
@@ -69,6 +87,6 @@
 				already have an account? <a href="../pages/signin.html">Signin</a>
 			</div>
 		</section>
-		<script src="../js/index.js"></script>
+		<script src="../js/signup.js"></script>
 	</body>
 </html>

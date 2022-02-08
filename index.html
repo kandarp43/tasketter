@@ -5,14 +5,31 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>DashBoard</title>
+		<link rel="stylesheet" href="./css/dashboard.css" />
 	</head>
 	<body>
-		<div>
-			<nav>
-				<li><a href="./pages/signin.html">signin</a></li>
-				<li><a href="./pages/signup.html">signup</a></li>
-			</nav>
-			<h1>DashBoard page</h1>
-		</div>
+		<section>
+			<header class="header">
+				<h1>Tasketer</h1>
+				<nav class="nav">
+					<ul>
+						<!-- <p class="greet" style="cursor: default"></p> -->
+						<a class="profile" href="/pages/profile.html">profile</a>
+						<a class="logout">Logout</a>
+					</ul>
+				</nav>
+			</header>
+			<!-- <h1>DashBoard page</h1> -->
+			<div class="container">
+				<div class="left">
+					<div class="greet"></div>
+					<div class="todo-container">
+						<input type="text" class="input" id="todo_input" />
+					</div>
+				</div>
+				<div class="right"></div>
+			</div>
+		</section>
+		<script src="./js/index.js"></script>
 	</body>
 </html>

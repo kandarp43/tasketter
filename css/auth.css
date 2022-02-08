@@ -63,7 +63,8 @@
 #signin_password,
 #signup_name,
 #signup_email,
-#signup_number {
+#signup_number,
+#signup_dob {
 	margin-top: 3px;
 	width: 100%;
 	padding: 20px;
@@ -93,7 +94,8 @@
 #signup_name:focus,
 #signup_email:focus,
 #signup_number:focus,
-#signup_gender:focus {
+#signup_gender:focus,
+#signup_dob:focus {
 	outline: 0;
 	color: coral;
 	border-bottom: 2px solid coral;
@@ -101,11 +103,11 @@
 }
 #signin_email:hover,
 #signin_password:hover,
-.input_box:hover,
 #signup_name:hover,
 #signup_email:hover,
 #signup_number:hover,
-#signup_gender:hover {
+#signup_gender:hover,
+#signup_dob:hover {
 	outline: 0;
 	border-bottom: 2px solid coral;
 }
@@ -128,7 +130,8 @@
 #btn {
 	background: transparent;
 	width: fit-content;
-	padding: 10px 35px;
+	padding: 6px 30px;
+	padding-bottom: 8px;
 	margin: 20px 0;
 	font-size: 16px;
 	font-weight: 700;
@@ -136,6 +139,7 @@
 	color: coral;
 	transition: all 0.2s;
 	cursor: pointer;
+	border-radius: 3px;
 }
 #btn:hover,
 #btn:focus {
