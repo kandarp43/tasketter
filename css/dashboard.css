@@ -24,10 +24,6 @@ section {
 	margin: 0px 50px;
 	padding: 15px 0;
 }
-.greet .user_name {
-	padding-left: 5px;
-	color: #ffffff;
-}
 .nav ul p,
 .nav ul a {
 	display: inline-flex;
@@ -37,7 +33,7 @@ section {
 	font-size: 14px;
 	list-style: none;
 	text-decoration: none;
-	/* border-radius: 5px; */
+	border-radius: 5px;
 	transition: all 0.2s;
 	cursor: pointer;
 }
@@ -112,30 +108,38 @@ section {
 }
 .left {
 	flex: 3;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	height: 90vh;
 	border-top-right-radius: 10px;
-	background: hsla(276, 91%, 79%, 1);
-
-	background: linear-gradient(
-		90deg,
-		hsla(276, 91%, 79%, 1) 0%,
-		hsla(254, 74%, 65%, 1) 100%
-	);
-
-	background: -moz-linear-gradient(
-		90deg,
-		hsla(276, 91%, 79%, 1) 0%,
-		hsla(254, 74%, 65%, 1) 100%
-	);
-
-	background: -webkit-linear-gradient(
-		90deg,
-		hsla(276, 91%, 79%, 1) 0%,
-		hsla(254, 74%, 65%, 1) 100%
-	);
-
-	filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#D397FA", endColorstr="#8364E8", GradientType=1 );
+	background: rgb(248, 240, 240);
 }
+.greet {
+	margin: 20px 0;
+}
+.greet .user_name {
+	padding-left: 5px;
+	color: coral;
+}
+#todo_input {
+	margin: 10px 0;
+	width: 100%;
+	padding: 10px;
+	font-size: 18px;
+	color: #000;
+	cursor: pointer;
+	border: 2px solid rgb(241, 150, 150);
+	background: #fff;
+	transition: all 0.2s ease-in-out;
+}
+#todo_input:focus,
+#todo_input:hover {
+	outline: 0;
+	color: #000;
+	border: 2px solid #f36666;
+}
+
 .right {
 	flex: 1;
 	height: 90vh;
