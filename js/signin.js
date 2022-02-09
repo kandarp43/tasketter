@@ -19,7 +19,7 @@ function toggleView(e) {
 
 function checkData() {
 	let allData = JSON.parse(localStorage.getItem('db'))
-	let userData
+	let userData = 0
 	if (allData) {
 		userData = allData.filter(({ number, email, password }) => {
 			return (
@@ -38,6 +38,7 @@ function doLogin(e) {
 		location.href = location.origin
 	} else {
 		alert('invalid email/phone or password')
+		signinPassword.value = ''
 	}
 }
 function getValue(e) {
