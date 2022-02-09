@@ -14,7 +14,7 @@
 				<nav class="nav">
 					<ul>
 						<!-- <p class="greet" style="cursor: default"></p> -->
-						<a class="profile" href="/pages/profile.html">profile</a>
+						<!-- <a class="profile" href="/pages/profile.html">profile</a> -->
 						<a class="logout">Logout</a>
 					</ul>
 				</nav>
@@ -24,15 +24,40 @@
 				<div class="left">
 					<div class="greet"></div>
 					<div class="todo-container">
-						<input
-							type="text"
-							class="input"
-							id="todo_input"
-							placeholder="write here..."
-						/>
+						<form id="todo_form" method="'post">
+							<input
+								type="text"
+								class="input"
+								id="todo_input"
+								placeholder="write here..."
+								autocomplete="off"
+							/>
+							<button class="btn">+</button>
+							<input type="hidden" id="hiddenInput" />
+						</form>
+					</div>
+					<div class="todo_list_container_incompleted"></div>
+					<div class="todo_list_container_completed"></div>
+				</div>
+
+				<div class="right">
+					<div class="gif_container">
+						<h1>Gifs</h1>
+						<img id="gif1" height="150px" width="150px" alt="loading ..." />
+						<img id="gif2" height="150px" width="150px" alt="loading ..." />
+					</div>
+					<hr />
+					<div class="weather_container">
+						<h1>weather Info</h1>
+						<h3 id="weather_city"></h3>
+						<h2 id="weather_temp"></h2>
+					</div>
+					<hr />
+					<div class="time_container">
+						<h1>current time</h1>
+						<h2 id="time"></h2>
 					</div>
 				</div>
-				<div class="right"></div>
 			</div>
 		</section>
 		<script src="./js/index.js"></script>

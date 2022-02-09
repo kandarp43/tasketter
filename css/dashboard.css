@@ -34,23 +34,22 @@ section {
 	list-style: none;
 	text-decoration: none;
 	border-radius: 5px;
-	transition: all 0.2s;
+	transition: all 0.1s ease-in;
 	cursor: pointer;
 }
 .profile {
-	/* background: #d481f5; */
+	background: #c5c5c552;
 	border: 2px solid #0f7fff;
 	color: #0f7fff;
 }
 .logout {
+	background: #c5c5c552;
 	border: 2px solid #ff930f;
 	color: #ff930f;
 }
 
 .nav ul .profile:hover {
 	color: #fff;
-	/* border: 2px solid transparent; */
-	/* background: #0f7fff; */
 	background: #575aff;
 
 	background: linear-gradient(
@@ -107,7 +106,7 @@ section {
 	height: 90vh;
 }
 .left {
-	flex: 3;
+	flex: 2;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -116,20 +115,22 @@ section {
 	background: rgb(248, 240, 240);
 }
 .greet {
+	font-size: 30px;
 	margin: 20px 0;
+	font-weight: 400;
 }
 .greet .user_name {
+	font-weight: 700;
 	padding-left: 5px;
-	color: coral;
+	color: rgb(214, 0, 221);
 }
 #todo_input {
-	margin: 10px 0;
-	width: 100%;
-	padding: 10px;
+	height: 40px;
+	padding: 0 10px;
 	font-size: 18px;
 	color: #000;
 	cursor: pointer;
-	border: 2px solid rgb(241, 150, 150);
+	border: 2px solid coral;
 	background: #fff;
 	transition: all 0.2s ease-in-out;
 }
@@ -139,8 +140,115 @@ section {
 	color: #000;
 	border: 2px solid #f36666;
 }
+#todo_form {
+	display: flex;
+}
+.btn {
+	height: 40px;
+	background: coral;
+	padding: 0px 10px;
+	font-size: 16px;
+	font-weight: 700;
+	border: 2px solid coral;
+	color: #fff;
+	transition: all 0.2s;
+	cursor: pointer;
+	font-size: 30px;
+}
+.btn:hover,
+.btn:focus {
+	outline: 0;
+	/* border-radius: 5px; */
+	background: coral;
+	color: #fff;
+	border: 2px solid transparent;
+}
+
+.todo_list_container_incompleted {
+	margin: 30px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	width: 500px;
+	height: 350px;
+	/* border: 1px solid #000; */
+	overflow: scroll;
+}
+.todo {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 350px;
+	height: 50px;
+	border: 1px solid rgb(233, 180, 180);
+	background: rgb(184, 184, 184);
+	margin-top: 10px;
+	border-radius: 5px;
+}
+
+#todo_check {
+	margin: 10px;
+	height: 20px;
+	width: 20px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+.edit_btn,
+.delete_btn {
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border: 0.2px solid #f50707;
+	background: #f50707;
+	color: #fff;
+	width: 40px;
+	height: 40px;
+
+	font-size: 25px;
+	font-weight: 600;
+	padding: 0px 3px;
+}
+.edit_btn {
+	border: 0.2px solid #73fa18;
+	background: #73fa18;
+	color: #fff;
+	margin-right: 1px;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
 
 .right {
 	flex: 1;
 	height: 90vh;
+	background: #fff;
+}
+.gif_container h1 {
+	margin: 10px 0;
+}
+#gif1,
+#gif2 {
+	margin-right: 10px;
+}
+.weather_container,
+.gif_container,
+.time_container {
+	margin: 10px;
+}
+.time_container h1 {
+	font-size: 18px;
+	color: rgb(230, 82, 82);
+	margin: 10px 0px;
+}
+.time_container #time {
+	margin: 10px 0px;
+	font-size: 30px;
+}
+.weather_container h1 {
+	color: rgb(84, 125, 240);
+}
+#weather_city {
+	margin-top: 10px;
+	font-size: 18px;
+}
+#weather_temp {
+	font-size: 28px;
 }

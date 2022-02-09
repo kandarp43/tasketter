@@ -13,7 +13,6 @@ let error,
 
 window.onload = () => {
 	let userData = JSON.parse(localStorage.getItem('user'))
-	console.log(userData)
 	if (userData) location.href = location.origin
 }
 
@@ -44,9 +43,13 @@ function checkData() {
 			return name === data['name'] || email === data['email']
 		})
 	}
-	return alreadyExists
-		? (error = 'user already Exists with this email or phone')
-		: false
+	if (alreadyExists) {
+		error = 'user already Exists with this email or phone'
+	} else {
+		error = ''
+		return false
+	}
+	return
 }
 function getValue(e) {
 	e.preventDefault()
@@ -69,10 +72,14 @@ function storeValue(e) {
 	let exists = checkData()
 	if (error) alert(error)
 	if (!error && !exists) {
+		let todoData = { email: data.email, todo: [] }
 		let getVal = JSON.parse(localStorage.getItem('db')) || []
+		let getTodoVal = JSON.parse(localStorage.getItem('todoDb')) || []
 		if (getVal) getVal.push(data)
+		if (getTodoVal) getTodoVal.push(todoData)
 		localStorage.setItem('db', JSON.stringify(getVal))
 		localStorage.setItem('user', JSON.stringify(data))
+		localStorage.setItem('todoDb', JSON.stringify(getTodoVal))
 		resetValue()
 		location.href = location.origin
 	}
