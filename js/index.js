@@ -16,11 +16,11 @@ const todoForm = document.getElementById('todo_form')
 let userData
 window.onload = () => {
 	userData = JSON.parse(localStorage.getItem('user'))
+	if (!userData) location.href = location.origin + '/pages/signin.html'
 	getGif()
 	getLocation()
 	displayTodo()
 	startTime()
-	if (!userData) location.href = location.origin + '/pages/signin.html'
 	greet.innerHTML = `Hello, <span class="user_name"> ${userData.name}</span>`
 }
 function makeLogout(e) {
