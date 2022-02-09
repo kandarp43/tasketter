@@ -63,7 +63,6 @@ function displayTodo() {
 		return completed === true
 	})
 
-	console.log(main)
 	let printTodoIncomplete = ''
 	main.forEach(({ todo, completed }, index) => {
 		printTodoIncomplete += `<div class="todo">
@@ -136,7 +135,6 @@ function getLocation() {
 					return res.json()
 				})
 				.then(function (myJson) {
-					console.log()
 					weatherCity.innerText = myJson.name
 					weatherTemp.innerText = (myJson.main.temp - 273.15).toFixed(2) + '°C'
 				})
