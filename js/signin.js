@@ -28,6 +28,7 @@ function checkData() {
 			)
 		})
 	}
+	console.log(signinData)
 	return userData
 }
 function doLogin(e) {
