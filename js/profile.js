@@ -26,9 +26,11 @@ function checkData() {
 			return number == p_number || email === p_email
 		})
 	}
+
 	if (
 		alreadyExists.length > 0 &&
-		(p_number !== user.number || p_email !== user.email)
+		p_number !== user.number &&
+		p_email !== user.email
 	) {
 		error = 'user already Exists with this email or phone'
 	} else {
@@ -51,15 +53,15 @@ function storeValue(e) {
 		let newSetValTodo = getTodoVal.filter(({ email }) => {
 			return email === user.email
 		})
-		newSetValTodo[0].email = p_email
-		newSetVal[0].name = p_name
-		newSetVal[0].email = p_email
-		newSetVal[0].number = p_number
+		if (newSetValTodo[0].email) newSetValTodo[0].email = p_email
+		if (newSetVal[0].name) newSetVal[0].name = p_name
+		if (newSetVal[0].email) newSetVal[0].email = p_email
+		if (newSetVal[0].number) newSetVal[0].number = p_number
 
 		localStorage.setItem('db', JSON.stringify(getVal))
 		localStorage.setItem('user', JSON.stringify(...newSetVal))
 		localStorage.setItem('todoDb', JSON.stringify(getTodoVal))
-		// location.reload()
+		location.reload()
 	}
 }
 
