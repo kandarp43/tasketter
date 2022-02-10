@@ -12,13 +12,13 @@ function checkData() {
 	p_name = document.querySelector('.p_name').value
 	p_email = document.querySelector('.p_email').value
 	p_number = Number(document.querySelector('.p_number').value)
+
 	console.log(p_name, p_email, p_number)
 	let validateEmail = new RegExp('[a-z0-9]+@[a-z]+.[a-z]{2,3}')
 	if (!p_name || p_name.length <= 2) error = 'insert Valid Name'
 	else if (!validateEmail.test(p_email)) error = 'insert Valid Email'
-	else if (!(p_number.toString().length === 10)) error = 'insert Valid number'
+	else if (p_number.toString().length != 10) error = 'insert Valid number'
 	else error = ''
-
 	let allData = JSON.parse(localStorage.getItem('db'))
 	let alreadyExists
 	if (allData) {
@@ -44,6 +44,7 @@ function storeValue(e) {
 	e.preventDefault()
 	let exists = checkData()
 	if (error) alert(error)
+	//
 	if (!error && !exists) {
 		let getVal = JSON.parse(localStorage.getItem('db'))
 		let getTodoVal = JSON.parse(localStorage.getItem('todoDb'))
@@ -61,7 +62,7 @@ function storeValue(e) {
 		localStorage.setItem('db', JSON.stringify(getVal))
 		localStorage.setItem('user', JSON.stringify(...newSetVal))
 		localStorage.setItem('todoDb', JSON.stringify(getTodoVal))
-		location.reload()
+		// location.reload()
 	}
 }
 
