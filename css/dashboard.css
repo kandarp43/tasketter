@@ -167,6 +167,10 @@ section {
 	color: #000;
 }
 
+.todo_list_container_incompleted::-webkit-scrollbar {
+	-webkit-appearance: none;
+	appearance: none;
+}
 .todo_list_container_incompleted {
 	margin: 30px;
 	display: flex;
