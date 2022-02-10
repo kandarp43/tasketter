@@ -1,9 +1,12 @@
 const logout = document.querySelector('.logout')
 const greet = document.querySelector('.greet')
 const gif1 = document.getElementById('gif1')
-const hiddenInput = document.getElementById('hiddenInput')
 const weatherCity = document.getElementById('weather_city')
 const weatherTemp = document.getElementById('weather_temp')
+const addTodoBtn = document.getElementById('add_todo_btn')
+const saveTodoBtn = document.getElementById('save_todo_btn')
+
+let EditBufferValue
 const list_container = document.querySelector(
 	'.todo_list_container_incompleted'
 )
@@ -33,13 +36,18 @@ todoForm.addEventListener('submit', addTodo)
 
 function addTodo(e) {
 	e.preventDefault()
+	if (todoInput.value.trim().length == 0) return
+	if (todoInput.value.trim().length > 30) {
+		alert('please enter less then 30 characters')
+		return
+	}
 	let newData = JSON.parse(localStorage.getItem('todoDb'))
 	let getUsersTodo = newData.filter(({ email }) => {
 		return email === userData.email
 	})
 	let todoList = [...getUsersTodo[0].todo]
 	todoList.push({
-		todo: todoInput.value,
+		todo: todoInput.value.trim(),
 		completed: false,
 	})
 	todoInput.value = ''
@@ -65,25 +73,91 @@ function displayTodo() {
 
 	let printTodoIncomplete = ''
 	main.forEach(({ todo, completed }, index) => {
-		printTodoIncomplete += `<div class="todo">
+		printTodoIncomplete += `<div class="todo ${completed ? 'active' : ''}">
 		<input type="checkbox" onclick="toggleTodo(${index})" id="todo_check" ${
 			completed ? 'checked' : ''
 		} />
 		<p class="todo_text">${todo}</p>
-		<div>
+		<div class="todo_btn_container">
+			<button class="edit_btn" onclick="editTodo(${index})">
+				<img src="https://cdn4.iconfinder.com/data/icons/eon-ecommerce-i-1/32/review_notes_pencil_pen-128.png" height="35px" width="30px" alt="" />
+			</button>
 			<button class="delete_btn" onclick="deleteTodo(${index})">
-			🗑
+				<img src="https://cdn1.iconfinder.com/data/icons/essential-39/64/Bin-256.png" height="35px" width="30px" alt="" />
 			</button>
 		</div>
 	</div>`
 	})
 	list_container.innerHTML = printTodoIncomplete
 
-	//<button class="edit_btn" onclick="editTodo(${index})">🖊</button>
+	//
 }
-// function editTodo() {}
+
+function editTodo(index) {
+	if (!EditBufferValue && EditBufferValue !== 0) {
+		document.querySelectorAll('.delete_btn')[index].style.display =
+			'inline-block'
+		document.querySelectorAll('#todo_check')[index].style.display =
+			'inline-block'
+	} else {
+		document.querySelectorAll('.delete_btn')[EditBufferValue].style.display =
+			'inline-block'
+		document.querySelectorAll('#todo_check')[EditBufferValue].style.display =
+			'inline-block'
+	}
+	EditBufferValue = index
+	if (
+		document.querySelector('.delete_btn') &&
+		document.querySelector('#todo_check')
+	) {
+		document.querySelectorAll('.delete_btn')[index].style.display = 'none'
+		document.querySelectorAll('#todo_check')[index].style.display = 'none'
+	}
+	todoForm.removeEventListener('submit', addTodo)
+	let newData = JSON.parse(localStorage.getItem('todoDb'))
+	let getUsersTodo = newData.filter(({ email }) => {
+		return email === userData.email
+	})
+	let main = getUsersTodo[0].todo
+	todoInput.value = main[index].todo
+	addTodoBtn.style.display = 'none'
+	saveTodoBtn.style.display = 'block'
+	todoForm.addEventListener('submit', saveEditedTodo)
+	todoInput.focus()
+}
+function saveEditedTodo(e) {
+	e.preventDefault()
+	let confirmation = confirm('Are you sure you want to change?')
+	if (!confirmation) return
+	if (todoInput.value.trim().length == 0) return
+	if (todoInput.value.trim().length > 30) {
+		alert('please enter less then 30 characters')
+		return
+	}
+	todoForm.removeEventListener('submit', saveEditedTodo)
+	let newData = JSON.parse(localStorage.getItem('todoDb'))
+	let getUsersTodo = newData.filter(({ email }) => {
+		return email === userData.email
+	})
+	let main = getUsersTodo[0].todo
+	main[EditBufferValue].todo = todoInput.value.trim()
+	getUsersTodo[0].todo = [...main]
+	let pushNewData = newData.filter(({ email }) => {
+		return !(email === userData.email)
+	})
+	pushNewData.push(getUsersTodo[0])
+	localStorage.setItem('todoDb', JSON.stringify(pushNewData))
+	displayTodo()
+	addTodoBtn.style.display = 'block'
+	saveTodoBtn.style.display = 'none'
+	todoForm.addEventListener('submit', addTodo)
+	todoInput.value = ''
+	EditBufferValue = ''
+}
 
 function deleteTodo(index) {
+	let confirmation = confirm('Are you sure you want to delete?')
+	if (!confirmation) return
 	let newData = JSON.parse(localStorage.getItem('todoDb'))
 	let getUsersTodo = newData.filter(({ email }) => {
 		return email === userData.email
@@ -99,6 +173,7 @@ function deleteTodo(index) {
 	displayTodo()
 }
 function toggleTodo(index) {
+	let Todo = document.querySelector('.todo')
 	let newData = JSON.parse(localStorage.getItem('todoDb'))
 	let getUsersTodo = newData.filter(({ email }) => {
 		return email === userData.email
@@ -110,6 +185,11 @@ function toggleTodo(index) {
 	})
 	pushNewData.push(getUsersTodo[0])
 	localStorage.setItem('todoDb', JSON.stringify(pushNewData))
+	if (Todo.classList.contains('active') && !main[index].completed) {
+		Todo.classList.remove('active')
+	} else {
+		Todo.classList.add('active')
+	}
 	displayTodo()
 }
 
@@ -123,8 +203,11 @@ function getGif() {
 		.then(function (myJson) {
 			gif1.src = myJson.data.images.original.url
 		})
+		.catch((err) => {
+			console.log(err)
+		})
+	setTimeout(getGif, 120000)
 }
-setInterval(getGif, 120000)
 function getLocation() {
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition((position) => {

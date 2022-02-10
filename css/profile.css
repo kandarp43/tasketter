@@ -1,0 +1,33 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	user-select: none;
+	font-family: arial;
+}
+
+section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+}
+
+.profile_container {
+	border: 1px solid #000;
+	width: 40%;
+	height: 50vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.profile_container h1 {
+	color: crimson;
+}
+.p_name,
+.p_email,
+.p_number,
+.p_dob {
+	color: #000;
+}

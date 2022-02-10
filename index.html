@@ -13,8 +13,7 @@
 				<h1>Tasketer</h1>
 				<nav class="nav">
 					<ul>
-						<!-- <p class="greet" style="cursor: default"></p> -->
-						<!-- <a class="profile" href="/pages/profile.html">profile</a> -->
+						<a class="profile" href="/pages/profile.html">profile</a>
 						<a class="logout">Logout</a>
 					</ul>
 				</nav>
@@ -32,8 +31,15 @@
 								placeholder="write here..."
 								autocomplete="off"
 							/>
-							<button class="btn">+</button>
-							<!-- <input type="hidden" id="hiddenInput" /> -->
+							<button class="btn" id="add_todo_btn">+</button>
+							<button
+								class="save_btn"
+								id="save_todo_btn"
+								style="display: none"
+								value="save"
+							>
+								save
+							</button>
 						</form>
 					</div>
 					<div class="todo_list_container_incompleted"></div>
@@ -45,15 +51,17 @@
 						<h1>Gifs</h1>
 						<img id="gif1" height="150px" width="150px" alt="loading ..." />
 					</div>
-					<hr />
+
 					<div class="weather_container">
+						<hr />
 						<h1>weather Info</h1>
 						<h3 id="weather_city"></h3>
 						<h2 id="weather_temp"></h2>
 					</div>
-					<hr />
+
 					<div class="time_container">
-						<h1>current time</h1>
+						<hr />
+						<h1>Current time</h1>
 						<h2 id="time"></h2>
 					</div>
 				</div>

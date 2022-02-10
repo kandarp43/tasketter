@@ -5,6 +5,72 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Profile</title>
+		<link rel="stylesheet" href="../css/auth.css" />
+		<link rel="stylesheet" href="../css/profile.css" />
 	</head>
-	<body></body>
+	<body>
+		<section>
+			<div class="profile_container">
+				<h1 class="profile_heading">Profile</h1>
+				<div class="profile_details">
+					<div class="p_name"></div>
+					<div class="p_email"></div>
+					<div class="p_number"></div>
+					<div class="p_dob"></div>
+				</div>
+			</div>
+			<div class="edit_profile_container" hidden>
+				<form id="signup_form" class="edit_profile_form" method="'post">
+					<div class="signup_name">
+						<label for="signup_name">Name :</label>
+						<input
+							type="text"
+							id="signup_name"
+							class="p_name"
+							name="name"
+							autocomplete="off"
+							required
+						/>
+					</div>
+					<div class="signup_email">
+						<label for="signup_email">Email :</label>
+						<input
+							type="email"
+							id="signup_email"
+							class="p_email"
+							name="email"
+							autocomplete="off"
+							required
+						/>
+					</div>
+					<div class="signup_number">
+						<label for="signup_number">Phone Number :</label>
+						<input
+							type="number"
+							id="signup_number"
+							class="p_number"
+							name="number"
+							autocomplete="off"
+							required
+						/>
+					</div>
+
+					<div class="signin_password">
+						<label for="signin_password">password :</label>
+						<input
+							type="password"
+							id="signin_password"
+							name="password"
+							placeholder="password"
+							required
+						/>
+
+						<input type="checkbox" id="show_pass" value="show password" />
+						<label for="show_pass" id="show_label">show password</label>
+					</div>
+					<button type="submit" id="btn">signup</button>
+				</form>
+			</div>
+		</section>
+	</body>
 </html>

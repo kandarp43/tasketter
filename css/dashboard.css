@@ -131,6 +131,7 @@ section {
 	color: #000;
 	cursor: pointer;
 	border: 2px solid coral;
+	border-right: 2px solid transparent;
 	background: #fff;
 	transition: all 0.2s ease-in-out;
 }
@@ -139,29 +140,31 @@ section {
 	outline: 0;
 	color: #000;
 	border: 2px solid #f36666;
+	border-right: 2px solid transparent;
 }
 #todo_form {
 	display: flex;
 }
-.btn {
+.btn,
+.save_btn {
 	height: 40px;
 	background: coral;
+	border: 2px solid coral;
+
 	padding: 0px 10px;
 	font-size: 16px;
 	font-weight: 700;
-	border: 2px solid coral;
 	color: #fff;
 	transition: all 0.2s;
 	cursor: pointer;
 	font-size: 30px;
 }
-.btn:hover,
-.btn:focus {
-	outline: 0;
-	/* border-radius: 5px; */
-	background: coral;
-	color: #fff;
-	border: 2px solid transparent;
+.save_btn {
+	font-size: 18px;
+	height: 40px;
+	background: #fffb10;
+	border: 2px solid coral;
+	color: #000;
 }
 
 .todo_list_container_incompleted {
@@ -172,14 +175,13 @@ section {
 	width: 500px;
 	height: 350px;
 	/* border: 1px solid #000; */
-	overflow: scroll;
+	overflow-y: scroll;
 }
 .todo {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	width: 350px;
-
 	border: 1px solid rgb(233, 180, 180);
 	background: rgb(184, 184, 184);
 	margin-top: 10px;
@@ -198,20 +200,20 @@ section {
 	border-top-right-radius: 5px;
 	border-bottom-right-radius: 5px;
 	border: 0.2px solid #f50707;
-	background: #f50707;
+	background: #fd5353;
 	color: #fff;
 	width: 40px;
 	height: 40px;
 	cursor: pointer;
 	font-size: 25px;
+	margin: 0px !important;
 	font-weight: 600;
 	padding: 0px 3px;
 }
 .edit_btn {
-	border: 0.2px solid #73fa18;
-	background: #73fa18;
+	border: 0.2px solid #c6f12a;
+	background: #f1ee2a;
 	color: #fff;
-	margin-right: 1px;
 	border-top-right-radius: 0px;
 	border-bottom-right-radius: 0px;
 }
@@ -220,6 +222,10 @@ section {
 	flex: 1;
 	height: 90vh;
 	background: #fff;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 .gif_container h1 {
 	margin: 10px 0;
@@ -232,6 +238,7 @@ section {
 .gif_container,
 .time_container {
 	margin: 10px;
+	/* justify-content: left; */
 }
 .time_container h1 {
 	font-size: 18px;
@@ -245,10 +252,27 @@ section {
 .weather_container h1 {
 	color: rgb(84, 125, 240);
 }
+
+.todo_btn_container {
+	display: flex;
+}
 #weather_city {
 	margin-top: 10px;
 	font-size: 18px;
 }
 #weather_temp {
 	font-size: 28px;
+}
+.todo_text {
+	/* width: 70%; */
+	text-align: center;
+	padding: 10px;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: 600;
+	color: #383232;
+	word-wrap: break-word;
+}
+.active {
+	background: rgb(134, 224, 123);
 }

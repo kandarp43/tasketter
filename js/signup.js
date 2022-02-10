@@ -39,8 +39,8 @@ function checkData() {
 	let allData = JSON.parse(localStorage.getItem('db'))
 	let alreadyExists
 	if (allData) {
-		alreadyExists = allData.some(({ name, email }) => {
-			return name === data['name'] || email === data['email']
+		alreadyExists = allData.some(({ number, email }) => {
+			return number === data['number'] || email === data['email']
 		})
 	}
 	if (alreadyExists) {
