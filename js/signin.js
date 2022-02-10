@@ -34,6 +34,7 @@ function doLogin(e) {
 	e.preventDefault()
 	let validData = checkData()
 	if (validData.length === 1) {
+		delete validData[0].password
 		localStorage.setItem('user', JSON.stringify(...validData))
 		location.href = location.origin
 	} else {

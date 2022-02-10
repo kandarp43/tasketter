@@ -78,8 +78,9 @@ function storeValue(e) {
 		if (getVal) getVal.push(data)
 		if (getTodoVal) getTodoVal.push(todoData)
 		localStorage.setItem('db', JSON.stringify(getVal))
-		localStorage.setItem('user', JSON.stringify(data))
 		localStorage.setItem('todoDb', JSON.stringify(getTodoVal))
+		delete data.password
+		localStorage.setItem('user', JSON.stringify(data))
 		resetValue()
 		location.href = location.origin
 	}

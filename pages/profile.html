@@ -13,13 +13,13 @@
 			<div class="profile_container">
 				<h1 class="profile_heading">Profile</h1>
 				<div class="profile_details">
-					<div class="p_name"></div>
-					<div class="p_email"></div>
-					<div class="p_number"></div>
-					<div class="p_dob"></div>
+					<div class="name"></div>
+					<div class="email"></div>
+					<div class="number"></div>
+					<div class="dob"></div>
 				</div>
 			</div>
-			<div class="edit_profile_container" hidden>
+			<div class="edit_profile_container">
 				<form id="signup_form" class="edit_profile_form" method="'post">
 					<div class="signup_name">
 						<label for="signup_name">Name :</label>
@@ -55,22 +55,24 @@
 						/>
 					</div>
 
-					<div class="signin_password">
-						<label for="signin_password">password :</label>
-						<input
-							type="password"
-							id="signin_password"
-							name="password"
-							placeholder="password"
-							required
-						/>
-
-						<input type="checkbox" id="show_pass" value="show password" />
-						<label for="show_pass" id="show_label">show password</label>
-					</div>
 					<button type="submit" id="btn">signup</button>
 				</form>
 			</div>
 		</section>
+		<script src="../js/profile.js"></script>
 	</body>
 </html>
+
+<!-- <div class="signin_password">
+	<label for="signin_password">password :</label>
+	<input
+		type="password"
+		id="signin_password"
+		name="password"
+		placeholder="password"
+		required
+	/>
+
+	<input type="checkbox" id="show_pass" value="show password" />
+	<label for="show_pass" id="show_label">show password</label>
+</div> -->
