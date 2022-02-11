@@ -27,15 +27,25 @@ function toggleView(e) {
 
 function checkData() {
 	let validateEmail = new RegExp('[a-z0-9]+@[a-z]+.[a-z]{2,3}')
-	if (!data['name'] || data['name'].length <= 2) error = 'insert Valid Name'
-	else if (!validateEmail.test(data['email'])) error = 'insert Valid Email'
-	else if (!(data['number'].toString().length === 10))
+	if (!data['name'] || data['name'].length <= 2) {
+		error = 'insert Valid Name'
+		return
+	} else if (!validateEmail.test(data['email'])) {
+		error = 'insert Valid Email'
+		return
+	} else if (!(data['number'].toString().length === 10)) {
 		error = 'insert Valid number'
-	else if (!data['gender']) error = 'insert gender'
-	else if (!data['dob']) error = 'insert Valid date of birth'
-	else if (!data['password'] || data['password'].length < 8)
+		return
+	} else if (!data['gender']) {
+		error = 'insert gender'
+		return
+	} else if (!data['dob']) {
+		error = 'insert Valid date of birth'
+		return
+	} else if (!data['password'] || data['password'].length < 8) {
 		error = 'inserts Valid password'
-	else error = ''
+		return
+	} else error = ''
 	let allData = JSON.parse(localStorage.getItem('db'))
 	let alreadyExists
 	if (allData) {
