@@ -95,27 +95,12 @@ function displayTodo() {
 function editTodo(index) {
 	for (let i = 0; i < document.querySelectorAll('.todo_text').length; i++) {
 		document.querySelectorAll('.todo_text')[i].onclick = function () {}
+		document.querySelectorAll('.delete_btn')[i].style.display = 'none'
+		document.querySelectorAll('#todo_check')[i].style.display = 'none'
 	}
 
-	if (!EditBufferValue && EditBufferValue !== 0) {
-		document.querySelectorAll('.delete_btn')[index].style.display =
-			'inline-block'
-		document.querySelectorAll('#todo_check')[index].style.display =
-			'inline-block'
-	} else {
-		document.querySelectorAll('.delete_btn')[EditBufferValue].style.display =
-			'inline-block'
-		document.querySelectorAll('#todo_check')[EditBufferValue].style.display =
-			'inline-block'
-	}
 	EditBufferValue = index
-	if (
-		document.querySelector('.delete_btn') &&
-		document.querySelector('#todo_check')
-	) {
-		document.querySelectorAll('.delete_btn')[index].style.display = 'none'
-		document.querySelectorAll('#todo_check')[index].style.display = 'none'
-	}
+
 	todoForm.removeEventListener('submit', addTodo)
 	let newData = JSON.parse(localStorage.getItem('todoDb'))
 	let getUsersTodo = newData.filter(({ email }) => {
