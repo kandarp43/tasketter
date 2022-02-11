@@ -4,6 +4,7 @@ let p_number
 // const p_password = document.querySelector('.p_password').value
 const editProfileForm = document.querySelector('.edit_profile_form')
 let user
+let toggleChangeProfile = false
 window.onload = () => {
 	user = JSON.parse(localStorage.getItem('user'))
 	if (!user) location.href = location.origin + '/pages/signin.html'
@@ -68,7 +69,7 @@ function storeValue(e) {
 		localStorage.setItem('db', JSON.stringify(getVal))
 		localStorage.setItem('user', JSON.stringify(...newSetVal))
 		localStorage.setItem('todoDb', JSON.stringify(getTodoVal))
-		// location.reload()
+		location.reload()
 	}
 }
 
