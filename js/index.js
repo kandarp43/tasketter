@@ -77,8 +77,8 @@ function displayTodo() {
 		<input type="checkbox" onclick="toggleTodo(${index})" id="todo_check" ${
 			completed ? 'checked' : ''
 		} />
-		<p class="todo_text">${todo}</p>
-		<div class="todo_btn_container">
+		<p class="todo_text" onclick="toggleTodo(${index})" >${todo}</p>
+		<div class="todo_btn_container" >
 			<button class="edit_btn" onclick="editTodo(${index})">
 				<img src="https://cdn4.iconfinder.com/data/icons/eon-ecommerce-i-1/32/review_notes_pencil_pen-128.png" height="35px" width="30px" alt="" />
 			</button>
@@ -92,8 +92,10 @@ function displayTodo() {
 
 	//
 }
-
 function editTodo(index) {
+	console.log(
+		(document.querySelectorAll('.todo_text')[index].onclick = function () {})
+	)
 	if (!EditBufferValue && EditBufferValue !== 0) {
 		document.querySelectorAll('.delete_btn')[index].style.display =
 			'inline-block'
@@ -127,13 +129,13 @@ function editTodo(index) {
 }
 function saveEditedTodo(e) {
 	e.preventDefault()
-	let confirmation = confirm('Are you sure you want to change?')
-	if (!confirmation) return
 	if (todoInput.value.trim().length == 0) return
 	if (todoInput.value.trim().length > 30) {
 		alert('please enter less then 30 characters')
 		return
 	}
+	let confirmation = confirm('Are you sure you want to change?')
+	if (!confirmation) return
 	todoForm.removeEventListener('submit', saveEditedTodo)
 	let newData = JSON.parse(localStorage.getItem('todoDb'))
 	let getUsersTodo = newData.filter(({ email }) => {

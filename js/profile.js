@@ -16,6 +16,18 @@ window.onload = () => {
 	togglePassword = false
 	document.querySelector('.edit_profile_container').style.display = 'none'
 	document.querySelector('.edit_password_container').style.display = 'none'
+	document.querySelector(
+		'.name'
+	).innerHTML = `<div class="profile_show"><div class='txt_display'>Name:</div><div class='txt_display'>${user.name}</div></div>`
+	document.querySelector(
+		'.email'
+	).innerHTML = `<div class="profile_show"><div class='txt_display'>Email:</div><div class='txt_display'>${user.email}</div></div>`
+	document.querySelector(
+		'.number'
+	).innerHTML = `<div class="profile_show"><div class='txt_display'>Number:</div><div class='txt_display'>${user.number}</div></div>`
+	document.querySelector(
+		'.dob'
+	).innerHTML = `<div class="profile_show"><div class='txt_display'>Birthday:</div><div class='txt_display'>${user.dob}</div></div>`
 }
 
 function checkData() {
@@ -102,6 +114,7 @@ function storePasswordValue(e) {
 	})
 	if (newSetVal[0].password) newSetVal[0].password = p_password
 	localStorage.setItem('db', JSON.stringify(getVal))
+	location.reload()
 }
 function toggleView(e) {
 	e.preventDefault()
