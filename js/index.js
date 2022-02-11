@@ -93,9 +93,10 @@ function displayTodo() {
 	//
 }
 function editTodo(index) {
-	console.log(
-		(document.querySelectorAll('.todo_text')[index].onclick = function () {})
-	)
+	for (let i = 0; i < document.querySelectorAll('.todo_text').length; i++) {
+		document.querySelectorAll('.todo_text')[i].onclick = function () {}
+	}
+
 	if (!EditBufferValue && EditBufferValue !== 0) {
 		document.querySelectorAll('.delete_btn')[index].style.display =
 			'inline-block'
