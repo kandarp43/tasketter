@@ -26,13 +26,15 @@ section {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	max-height: 150vh;
+	max-height: 90vh;
+	/* height: 90vh; */
+}
+body {
 	height: 100vh;
 }
-
 .profile_container {
 	width: 35%;
-	background: #9baaff91;
+	background: #ed217c;
 	min-height: 50vh;
 	display: flex;
 	flex-direction: column;
@@ -44,7 +46,7 @@ section {
 }
 .profile_container h1 {
 	margin: 5px;
-	color: #524949;
+	color: #f1e9e9;
 }
 .profile_show {
 	width: 100%;
@@ -55,7 +57,7 @@ section {
 }
 .profile_details {
 	border-radius: 5px;
-	background: #f08585;
+	background: #2d3047;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -63,9 +65,11 @@ section {
 	height: 83%;
 }
 .txt_display {
-	min-width: 50%;
-	color: #fff;
-	font-size: 16px;
+	/* min-width: 50%; */
+	max-width: fit-content;
+	font-weight: 700;
+	color: #1b998b;
+	font-size: 17px;
 	text-align: left;
 }
 
@@ -93,7 +97,7 @@ a:active {
 #editPassword {
 	background: #eb6d6d;
 }
-.edit_btn {
+.profile_edit_btn {
 	padding: 10px;
 }
 

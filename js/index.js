@@ -5,6 +5,7 @@ const weatherCity = document.getElementById('weather_city')
 const weatherTemp = document.getElementById('weather_temp')
 const addTodoBtn = document.getElementById('add_todo_btn')
 const saveTodoBtn = document.getElementById('save_todo_btn')
+const deleteAllTodoBtn = document.getElementById('deleteAll_todo_btn')
 
 let EditBufferValue
 const list_container = document.querySelector(
@@ -15,6 +16,7 @@ const list_container_completed = document.querySelector(
 )
 const todoInput = document.getElementById('todo_input')
 const todoForm = document.getElementById('todo_form')
+
 let userData
 window.onload = () => {
 	userData = JSON.parse(localStorage.getItem('user'))
@@ -31,6 +33,7 @@ function makeLogout(e) {
 	location.href = location.origin + '/pages/signin.html'
 }
 
+document.addEventListener('keydown', deleteAllTodo)
 logout.addEventListener('click', makeLogout)
 todoForm.addEventListener('submit', addTodo)
 
@@ -67,16 +70,16 @@ function displayTodo() {
 		return email === userData.email
 	})
 	let main = getUsersTodo[0].todo
-	let todoArray_complete = getUsersTodo[0].todo.filter(({ completed }) => {
-		return completed === true
-	})
-
 	let printTodoIncomplete = ''
+	let printTodoCompleted = ''
 	main.forEach(({ todo, completed }, index) => {
-		printTodoIncomplete += `<div class="todo ${completed ? 'active' : ''}">
+		if (!completed) {
+			printTodoIncomplete += `<div id="todo${index}" class="todo ${
+				completed ? 'active' : ''
+			}">
 		<input type="checkbox" onclick="toggleTodo(${index})" id="todo_check" ${
-			completed ? 'checked' : ''
-		} />
+				completed ? 'checked' : ''
+			} />
 		<p class="todo_text" onclick="toggleTodo(${index})" >${todo}</p>
 		<div class="todo_btn_container" >
 			<button class="edit_btn" onclick="editTodo(${index})">
@@ -87,9 +90,27 @@ function displayTodo() {
 			</button>
 		</div>
 	</div>`
+		} else {
+			printTodoCompleted += `<div class="todo ${completed ? 'active' : ''}">
+		<input type="checkbox" onclick="toggleTodo(${index})" id="todo_check" ${
+				completed ? 'checked' : ''
+			} />
+		<p class="todo_text" onclick="toggleTodo(${index})" >${todo}</p>
+		<div class="todo_btn_container" >
+			<button class="edit_btn" onclick="editTodo(${index})">
+				<img src="https://cdn4.iconfinder.com/data/icons/eon-ecommerce-i-1/32/review_notes_pencil_pen-128.png" height="35px" width="30px" alt="" />
+			</button>
+			<button class="delete_btn" onclick="deleteTodo(${index})">
+				<img src="https://cdn1.iconfinder.com/data/icons/essential-39/64/Bin-256.png" height="35px" width="30px" alt="" />
+			</button>
+		</div>
+	</div>`
+		}
 	})
-	list_container.innerHTML = printTodoIncomplete
+	list_container.innerHTML = printTodoIncomplete || 'no pending tasks'
 
+	list_container_completed.innerHTML =
+		printTodoCompleted || 'no completed tasks'
 	//
 }
 function editTodo(index) {
@@ -98,9 +119,7 @@ function editTodo(index) {
 		document.querySelectorAll('.delete_btn')[i].style.display = 'none'
 		document.querySelectorAll('#todo_check')[i].style.display = 'none'
 	}
-
 	EditBufferValue = index
-
 	todoForm.removeEventListener('submit', addTodo)
 	let newData = JSON.parse(localStorage.getItem('todoDb'))
 	let getUsersTodo = newData.filter(({ email }) => {
@@ -144,8 +163,8 @@ function saveEditedTodo(e) {
 }
 
 function deleteTodo(index) {
-	let confirmation = confirm('Are you sure you want to delete?')
-	if (!confirmation) return
+	// let confirmation = confirm('Are you sure you want to delete?')
+	// if (!confirmation) return
 	let newData = JSON.parse(localStorage.getItem('todoDb'))
 	let getUsersTodo = newData.filter(({ email }) => {
 		return email === userData.email
@@ -160,6 +179,27 @@ function deleteTodo(index) {
 	localStorage.setItem('todoDb', JSON.stringify(pushNewData))
 	displayTodo()
 }
+
+function deleteAllTodo(e) {
+	if (e.key === 'Delete') {
+		let confirmation = confirm('Are you sure you want to delete all Todos')
+		if (!confirmation) return
+		let newData = JSON.parse(localStorage.getItem('todoDb'))
+		let getUsersTodo = newData.filter(({ email }) => {
+			return email === userData.email
+		})
+		todoInput.value = ''
+		getUsersTodo[0].todo = []
+		let pushNewData = newData.filter(({ email }) => {
+			return !(email === userData.email)
+		})
+		pushNewData.push(getUsersTodo[0])
+		localStorage.setItem('todoDb', JSON.stringify(pushNewData))
+		e.preventDefault()
+		displayTodo()
+	}
+}
+
 function toggleTodo(index) {
 	let Todo = document.querySelector('.todo')
 	let newData = JSON.parse(localStorage.getItem('todoDb'))

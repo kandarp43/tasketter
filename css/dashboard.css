@@ -12,7 +12,7 @@ section {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	/* height: 10vh; */
+	height: 10vh;
 }
 .header h1 {
 	margin: 0px 50px;
@@ -110,9 +110,9 @@ section {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	height: 90vh;
+	height: fit-content;
 	border-top-right-radius: 10px;
-	background: rgb(248, 240, 240);
+	/* background: rgb(248, 240, 240); */
 }
 .greet {
 	font-size: 30px;
@@ -165,29 +165,33 @@ section {
 	border: 2px solid coral;
 	color: #000;
 }
+.todo_list_container_completed::-webkit-scrollbar,
 .todo_list_container_incompleted::-webkit-scrollbar {
 	width: 2px;
 	border-radius: 30px;
 	transition: all 0.2s;
 }
 
+.todo_list_container_completed:hover::-webkit-scrollbar-track,
 .todo_list_container_incompleted:hover::-webkit-scrollbar-track {
 	width: 5px;
 	border-radius: 30px;
-	box-shadow: inset 0 0 3px #0a0909;
+	box-shadow: inset 0 0 3px #dbc8c8;
 }
-
+.todo_list_container_completed::-webkit-scrollbar-thumb,
 .todo_list_container_incompleted::-webkit-scrollbar-thumb {
 	scroll-behavior: smooth;
 	border-radius: 30px;
 	transition: all 0.2s;
 	scroll-padding: 10px;
 }
+.todo_list_container_completed:hover::-webkit-scrollbar-thumb,
 .todo_list_container_incompleted:hover::-webkit-scrollbar-thumb {
 	background-color: #fc6262;
 	outline: 1.5px solid #fc6262;
 	border-radius: 30px;
 }
+.todo_list_container_completed::-webkit-scrollbar,
 .todo_list_container_incompleted::-webkit-scrollbar {
 	-webkit-appearance: none;
 	appearance: none;
@@ -195,15 +199,22 @@ section {
 	width: 5px;
 	scroll-padding: 10px;
 }
+.todo_list_container_completed,
 .todo_list_container_incompleted {
 	margin: 30px;
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-	width: 500px;
-	height: 350px;
-	/* border: 1px solid #000; */
+	width: 400px;
+	height: 300px;
+	min-height: 200px;
 	overflow-y: scroll;
+	box-shadow: 2px 14px 25px 0px rgba(247, 154, 211, 0.28);
+	-webkit-box-shadow: 2px 14px 25px 0px rgba(247, 154, 211, 0.28);
+	-moz-box-shadow: 2px 14px 25px 0px rgba(247, 154, 211, 0.28);
+}
+.main_task_container {
+	display: flex;
 }
 .todo {
 	display: flex;
@@ -328,7 +339,7 @@ section {
 	font-weight: 600;
 	color: #383232;
 	word-wrap: break-word;
-	transition: all 0.1s;
+	transition: all 0.1s ease-out;
 }
 .active {
 	opacity: 0.8;
