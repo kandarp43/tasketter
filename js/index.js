@@ -74,37 +74,35 @@ function displayTodo() {
 	let printTodoCompleted = ''
 	main.forEach(({ todo, completed }, index) => {
 		if (!completed) {
-			printTodoIncomplete += `<div id="todo${index}" class="todo ${
-				completed ? 'active' : ''
-			}">
-		<input type="checkbox" onclick="toggleTodo(${index})" id="todo_check" ${
+			printTodoIncomplete += `<div class="todo ${completed ? 'active' : ''}">
+				<input type="checkbox" onclick="toggleTodo(${index})" id="todo_check" ${
 				completed ? 'checked' : ''
 			} />
-		<p class="todo_text" onclick="toggleTodo(${index})" >${todo}</p>
-		<div class="todo_btn_container" >
-			<button class="edit_btn" onclick="editTodo(${index})">
-				<img src="https://cdn4.iconfinder.com/data/icons/eon-ecommerce-i-1/32/review_notes_pencil_pen-128.png" height="35px" width="30px" alt="" />
-			</button>
-			<button class="delete_btn" onclick="deleteTodo(${index})">
-				<img src="https://cdn1.iconfinder.com/data/icons/essential-39/64/Bin-256.png" height="35px" width="30px" alt="" />
-			</button>
-		</div>
-	</div>`
+				<p class="todo_text" onclick="toggleTodo(${index})" >${todo}</p>
+				<div class="todo_btn_container" >
+					<button class="edit_btn" onclick="editTodo(${index})">
+						<img src="https://cdn4.iconfinder.com/data/icons/eon-ecommerce-i-1/32/review_notes_pencil_pen-128.png" height="35px" width="30px" alt="" />
+					</button>
+					<button class="delete_btn" onclick="deleteTodo(${index})">
+						<img src="https://cdn1.iconfinder.com/data/icons/essential-39/64/Bin-256.png" height="35px" width="30px" alt="" />
+					</button>
+				</div>
+			</div>`
 		} else {
 			printTodoCompleted += `<div class="todo ${completed ? 'active' : ''}">
-		<input type="checkbox" onclick="toggleTodo(${index})" id="todo_check" ${
+					<input type="checkbox" onclick="toggleTodo(${index})" id="todo_check" ${
 				completed ? 'checked' : ''
 			} />
-		<p class="todo_text" onclick="toggleTodo(${index})" >${todo}</p>
-		<div class="todo_btn_container" >
-			<button class="edit_btn" onclick="editTodo(${index})">
-				<img src="https://cdn4.iconfinder.com/data/icons/eon-ecommerce-i-1/32/review_notes_pencil_pen-128.png" height="35px" width="30px" alt="" />
-			</button>
-			<button class="delete_btn" onclick="deleteTodo(${index})">
-				<img src="https://cdn1.iconfinder.com/data/icons/essential-39/64/Bin-256.png" height="35px" width="30px" alt="" />
-			</button>
-		</div>
-	</div>`
+				<p class="todo_text" onclick="toggleTodo(${index})" >${todo}</p>
+				<div class="todo_btn_container" >
+					<button class="edit_btn" onclick="editTodo(${index})">
+						<img src="https://cdn4.iconfinder.com/data/icons/eon-ecommerce-i-1/32/review_notes_pencil_pen-128.png" height="35px" width="30px" alt="" />
+					</button>
+					<button class="delete_btn" onclick="deleteTodo(${index})">
+						<img src="https://cdn1.iconfinder.com/data/icons/essential-39/64/Bin-256.png" height="35px" width="30px" alt="" />
+					</button>
+				</div>
+			</div>`
 		}
 	})
 	list_container.innerHTML = printTodoIncomplete || 'no pending tasks'
