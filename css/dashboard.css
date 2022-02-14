@@ -212,6 +212,7 @@ section {
 .todo_list_container_completed,
 .todo_list_container_incompleted {
 	margin: 30px;
+	border-radius: 5px;
 	display: flex;
 	align-items: center;
 	flex-direction: column;

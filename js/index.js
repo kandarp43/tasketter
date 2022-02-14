@@ -107,10 +107,13 @@ function displayTodo() {
 			</div>`
 		}
 	})
-	list_container.innerHTML = printTodoIncomplete || 'no pending tasks'
+	list_container.innerHTML =
+		printTodoIncomplete ||
+		'<p style="margin-top:20px;font-size:18px">no pending tasks</p>'
 
 	list_container_completed.innerHTML =
-		printTodoCompleted || 'no completed tasks'
+		printTodoCompleted ||
+		'<p style="margin-top:20px;font-size:18px">no completed tasks</p>'
 	//
 }
 function editTodo(index) {
