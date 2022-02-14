@@ -1,6 +1,7 @@
 let p_name
 let p_email
 let p_number
+const p_logout = document.querySelector('.logout')
 const viewPassword = document.getElementById('show_pass')
 const editProfileForm = document.querySelector('.edit_profile_form')
 const editPasswordForm = document.querySelector('#profile_form')
@@ -18,18 +19,25 @@ window.onload = () => {
 	document.querySelector('.edit_password_container').style.display = 'none'
 	document.querySelector(
 		'.name'
-	).innerHTML = `<div class="profile_show"><div class='txt_display'>Name:</div><div class='txt_display'>${user.name}</div></div>`
+	).innerHTML = `<div class="profile_show"><div class='txt_display'>${user.name}</div></div>`
 	document.querySelector(
 		'.email'
-	).innerHTML = `<div class="profile_show"><div class='txt_display'>Email:</div><div class='txt_display'>${user.email}</div></div>`
+	).innerHTML = `<div class="profile_show"><div class='txt_display'>${user.email}</div></div>`
 	document.querySelector(
 		'.number'
-	).innerHTML = `<div class="profile_show"><div class='txt_display'>Number:</div><div class='txt_display'>${user.number}</div></div>`
+	).innerHTML = `<div class="profile_show"><div class='txt_display'>${user.number}</div></div>`
 	document.querySelector(
 		'.dob'
-	).innerHTML = `<div class="profile_show"><div class='txt_display'>Birthday:</div><div class='txt_display'>${user.dob}</div></div>`
+	).innerHTML = `<div class="profile_show"><div class='txt_display'>${user.dob}</div></div>`
 }
 
+function makeLogout(e) {
+	e.preventDefault()
+	localStorage.removeItem('user')
+	location.href = location.origin + '/pages/signin.html'
+}
+
+p_logout.addEventListener('click', makeLogout)
 function checkData() {
 	p_name = document.querySelector('.p_name').value
 	p_email = document.querySelector('.p_email').value

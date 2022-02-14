@@ -6,16 +6,17 @@
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.signin_page {
-	height: 100vh;
+.signin_page,
+.profile_form {
+	height: 90vh;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 }
 .signup_page {
-	margin: 100px 0px;
-	height: 100vh;
+	margin: 130px 0px;
+	height: 90vh;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -52,7 +53,8 @@
 	color: rgb(253, 100, 44);
 }
 #signin_form,
-#signup_form {
+#signup_form,
+#profile_form {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
@@ -148,4 +150,10 @@
 	background: coral;
 	color: #fff;
 	border: 2px solid transparent;
+}
+
+@media screen and (max-width: 480px) {
+	.signin_page {
+		height: 70vh;
+	}
 }

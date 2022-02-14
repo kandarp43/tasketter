@@ -2,11 +2,12 @@ const logout = document.querySelector('.logout')
 const greet = document.querySelector('.greet')
 const gif1 = document.getElementById('gif1')
 const weatherCity = document.getElementById('weather_city')
+const weatherWind = document.getElementById('weather_wind')
+const weatherStatus = document.getElementById('weather_status')
 const weatherTemp = document.getElementById('weather_temp')
 const addTodoBtn = document.getElementById('add_todo_btn')
 const saveTodoBtn = document.getElementById('save_todo_btn')
 const deleteAllTodoBtn = document.getElementById('deleteAll_todo_btn')
-
 let EditBufferValue
 const list_container = document.querySelector(
 	'.todo_list_container_incompleted'
@@ -34,6 +35,7 @@ function makeLogout(e) {
 }
 
 document.addEventListener('keydown', deleteAllTodo)
+deleteAllTodoBtn.addEventListener('click', deleteAllTodo)
 logout.addEventListener('click', makeLogout)
 todoForm.addEventListener('submit', addTodo)
 
@@ -179,6 +181,23 @@ function deleteTodo(index) {
 }
 
 function deleteAllTodo(e) {
+	if (e.target.id === 'deleteAll_todo_btn') {
+		let confirmation = confirm('Are you sure you want to delete all Todos')
+		if (!confirmation) return
+		let newData = JSON.parse(localStorage.getItem('todoDb'))
+		let getUsersTodo = newData.filter(({ email }) => {
+			return email === userData.email
+		})
+		todoInput.value = ''
+		getUsersTodo[0].todo = []
+		let pushNewData = newData.filter(({ email }) => {
+			return !(email === userData.email)
+		})
+		pushNewData.push(getUsersTodo[0])
+		localStorage.setItem('todoDb', JSON.stringify(pushNewData))
+		e.preventDefault()
+		displayTodo()
+	}
 	if (e.key === 'Delete') {
 		let confirmation = confirm('Are you sure you want to delete all Todos')
 		if (!confirmation) return
@@ -246,6 +265,8 @@ function getLocation() {
 				.then(function (myJson) {
 					weatherCity.innerText = myJson.name
 					weatherTemp.innerText = (myJson.main.temp - 273.15).toFixed(2) + '°C'
+					weatherWind.innerText = 'wind ' + myJson.wind.speed + 'km/h'
+					weatherStatus.innerText = myJson.weather[0].description
 				})
 		})
 	}

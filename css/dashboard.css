@@ -12,7 +12,7 @@ section {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	height: 10vh;
+	min-height: 10vh;
 }
 .header h1 {
 	margin: 0px 50px;
@@ -21,6 +21,7 @@ section {
 	cursor: pointer;
 }
 .nav ul {
+	margin: 30px 50px;
 	margin: 0px 50px;
 	padding: 15px 0;
 }
@@ -146,7 +147,8 @@ section {
 	display: flex;
 }
 .btn,
-.save_btn {
+.save_btn,
+.deleteAll_btn {
 	height: 40px;
 	background: coral;
 	border: 2px solid coral;
@@ -157,6 +159,14 @@ section {
 	transition: all 0.2s;
 	cursor: pointer;
 	font-size: 30px;
+}
+.deleteAll_btn {
+	width: 100px;
+	font-size: 16px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	display: none;
 }
 .save_btn {
 	font-size: 18px;
@@ -209,9 +219,8 @@ section {
 	height: 300px;
 	min-height: 200px;
 	overflow-y: scroll;
-	box-shadow: 2px 14px 25px 0px rgba(247, 154, 211, 0.28);
-	-webkit-box-shadow: 2px 14px 25px 0px rgba(247, 154, 211, 0.28);
-	-moz-box-shadow: 2px 14px 25px 0px rgba(247, 154, 211, 0.28);
+	-webkit-box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.55);
+	box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.55);
 }
 .main_task_container {
 	display: flex;
@@ -339,6 +348,9 @@ section {
 #weather_temp {
 	font-size: 28px;
 }
+#weather_status {
+	font-size: 28px;
+}
 .todo_text {
 	min-width: 60%;
 	width: 70%;
@@ -367,6 +379,7 @@ section {
 		flex-direction: column;
 	}
 	.main_task_container {
+		display: flex;
 		align-items: center;
 		justify-content: space-around;
 	}
@@ -380,13 +393,19 @@ section {
 		width: 60%;
 		height: fit-content;
 	}
+	.weather_container,
+	.gif_container,
+	.time_container {
+		width: 30%;
+	}
 }
 
 @media screen and (max-width: 875px) {
 	.main_task_container {
-		flex-direction: column;
-		align-items: center;
-		justify-content: space-between;
+		display: block;
+		width: 80%;
+		/* flex-direction: column; */
+		/* justify-content: space-between; */
 	}
 	h2 {
 		text-align: center;
@@ -395,23 +414,32 @@ section {
 		margin-right: 0px;
 		width: 340px;
 	}
-	.todo_list_container_incompleted {
-		width: 100%;
-		margin: 0px;
-	}
+	.todo_list_container_incompleted,
 	.todo_list_container_completed {
-		width: 100%;
 		margin: 0px;
+		width: 100%;
 	}
+
 	.nav ul {
 		margin: 0px;
+		margin-right: 10px;
+		/* margin-bottom: 30px; */
 	}
+
 	.todo_text {
 		width: 60%;
 		height: fit-content;
 	}
 	.main_task_container h2 {
 		margin: 10px 0;
+	}
+	.main_task_container {
+		margin-bottom: 10px;
+	}
+	.weather_container,
+	.gif_container,
+	.time_container {
+		width: 40%;
 	}
 }
 
@@ -430,11 +458,59 @@ section {
 		width: 60%;
 		height: fit-content;
 	}
-
-	.nav ul {
+	.main_task_container {
+		width: 100%;
+		margin-bottom: 10px;
+	}
+	.todo_list_container_incompleted,
+	.todo_list_container_completed {
+		width: 100%;
 		margin: 0px;
+	}
+	.nav ul {
+		margin: 0;
+	}
+	.header h1 {
+		padding: 0px 50px;
 	}
 	.main_task_container h2 {
 		margin: 10px 0;
+	}
+
+	.deleteAll_btn {
+		display: flex;
+		margin-top: 5px;
+	}
+	.weather_container,
+	.gif_container,
+	.time_container {
+		width: 50%;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.profile_container {
+		width: 85%;
+	}
+	.header {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		justify-content: space-between;
+		height: 10vh;
+		margin: 20px 0;
+	}
+	.nav ul {
+		margin: 0px;
+	}
+	.main_task_container {
+		display: block;
+		width: 100%;
+		margin-bottom: 10px;
+	}
+	.weather_container,
+	.gif_container,
+	.time_container {
+		width: 50%;
 	}
 }
