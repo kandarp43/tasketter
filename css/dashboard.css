@@ -227,7 +227,7 @@ section {
 	display: flex;
 	width: 100%;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: space-evenly;
 	padding: 10px;
 }
 .main_task_container h2 {

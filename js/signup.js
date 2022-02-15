@@ -27,8 +27,8 @@ function toggleView(e) {
 
 function checkData() {
 	let validateEmail = new RegExp('[a-z0-9]+@[a-z]+.[a-z]{2,3}')
-	if (!data['name'] || data['name'].length <= 2) {
-		error = 'insert Valid Name'
+	if (!data['name'] || data['name'].length <= 2 || data['name'].length >= 20) {
+		error = 'minimum name length is 2 and maximum is 20'
 		return
 	} else if (!validateEmail.test(data['email'])) {
 		error = 'insert Valid Email'
@@ -43,7 +43,7 @@ function checkData() {
 		error = 'insert Valid date of birth'
 		return
 	} else if (!data['password'] || data['password'].length < 8) {
-		error = 'inserts Valid password'
+		error = 'password length must be greater than 8'
 		return
 	} else error = ''
 	let allData = JSON.parse(localStorage.getItem('db'))
