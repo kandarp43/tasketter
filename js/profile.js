@@ -10,6 +10,7 @@ const editPassword = document.querySelector('#editPassword')
 let user
 let toggleChangeProfile = false
 let togglePassword = false
+console.log(location.origin)
 window.onload = () => {
 	user = JSON.parse(localStorage.getItem('user'))
 	if (!user) location.href = location.origin + '/pages/signin.html'
