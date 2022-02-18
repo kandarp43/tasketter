@@ -211,6 +211,7 @@ section {
 }
 .todo_list_container_completed,
 .todo_list_container_incompleted {
+	padding-bottom: 10px;
 	margin: 30px;
 	border-radius: 5px;
 	display: flex;
@@ -490,6 +491,9 @@ section {
 }
 
 @media screen and (max-width: 480px) {
+	span#notice {
+		display: none;
+	}
 	.profile_container {
 		width: 85%;
 	}
@@ -513,5 +517,9 @@ section {
 	.gif_container,
 	.time_container {
 		width: 50%;
+	}
+	.deleteAll_btn {
+		display: flex;
+		margin-top: 5px;
 	}
 }

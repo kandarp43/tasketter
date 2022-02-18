@@ -64,6 +64,7 @@ function addTodo(e) {
 	pushNewData.push(getUsersTodo[0])
 	localStorage.setItem('todoDb', JSON.stringify(pushNewData))
 	displayTodo()
+	list_container.scrollTo({ top: list_container.scrollHeight })
 }
 
 function displayTodo() {
@@ -114,7 +115,6 @@ function displayTodo() {
 	list_container_completed.innerHTML =
 		printTodoCompleted ||
 		'<p style="margin-top:20px;font-size:18px">no completed tasks</p>'
-	//
 }
 function editTodo(index) {
 	for (let i = 0; i < document.querySelectorAll('.todo_text').length; i++) {
@@ -202,7 +202,11 @@ function deleteAllTodo(e) {
 		displayTodo()
 	}
 	if (e.key === 'Delete') {
-		let confirmation = confirm('Are you sure you want to delete all Todos')
+		let confirmation =
+			confirm('Are you sure you want to delete all Todos') &&
+			setInterval(() => {
+				return false
+			}, 5000)
 		if (!confirmation) return
 		let newData = JSON.parse(localStorage.getItem('todoDb'))
 		let getUsersTodo = newData.filter(({ email }) => {
